@@ -30,7 +30,7 @@ const start = async () => {
         data: 'id=' + config.id + '&uid=' + config.uid
     })
 
-    const token_id = data.data.info.token_id
+    const { token_id, price} = data.data.info
 
     data = await request({
         url: 'https://h5.stararknft.art/api/Pay/before_buy_box',
@@ -45,7 +45,7 @@ const start = async () => {
         headers: config.headers,
         data: 'id='+ config.id + 
                 '&uid=' + config.uid + 
-                '&money=' + config.price + 
+                '&money=' + price + 
                 '&token_id='+ token_id + 
                 '&password=' + config.password
     })
