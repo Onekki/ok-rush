@@ -39,7 +39,7 @@ const start = async () => {
         data: 'id=' + config.id +'&uid=' + config.uid + '&token_id=' + token_id
     })
 
-    data = await request({
+    await request({
         url: 'https://h5.stararknft.art/api/Pay/direct_buy_box',
         method: 'POST',
         headers: config.headers,
@@ -49,8 +49,6 @@ const start = async () => {
                 '&token_id='+ token_id + 
                 '&password=' + config.password
     })
-    
-    console.log(data)
     
     console.log('end')
 }
