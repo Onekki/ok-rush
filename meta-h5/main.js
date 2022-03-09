@@ -1,3 +1,4 @@
+const notifier = require('node-notifier')
 const axios = require('axios')
 const config = require('./config')
 
@@ -10,6 +11,7 @@ const request = async (options) => {
         const response = await axios.request(options)
         const { status } = response.data
         if ([200].includes(status)) {
+            console.log(options.url)
             console.log(response.data)
             return response.data
         }
@@ -22,7 +24,7 @@ const request = async (options) => {
 }
 
 const start = async () => {
-    console.log('start')
+    notifier.notify('start')
 
     let data = await request({
         method: 'GET',
@@ -35,49 +37,49 @@ const start = async () => {
     data = await request({
         method: 'POST',
         url: 'https://meta-art.genimous.com/api/cart/add',
-        data: {
+        data: JSON.stringify({
             cartNum: 1,
             productId: config.pid,
             uniqueId: unique
-        },
+        }),
         headers: config.headers
     })
 
-    const cartId = data.cartId
+    const cartId = data.data.cartId
 
     data = await request({
         method: 'POST',
         url: 'https://meta-art.genimous.com/api/order/confirm',
-        data: {
+        data: JSON.stringify({
             cartId: cartId
-        },
+        }),
         headers: config.headers
     })
 
-    const orderKey = data.orderKey
+    const orderKey = data.data.orderKey
 
     data = await request({
         method: 'POST',
         url: 'https://meta-art.genimous.com/api/order/computed/' + orderKey,
-        data: {
+        data: JSON.stringify({
             couponId: '0'
-        },
+        }),
         headers: config.headers
     })
 
     await request({
         method: 'POST',
         url: 'https://meta-art.genimous.com/api/order/create/' + orderKey,
-        data: {
+        data: JSON.stringify({
             couponId: '0',
             from: 'weixinh5',
             isPay: '0',
             payType: 'weixin'
-        },
+        }),
         headers: config.headers
     })
 
-    console.log('end')
+    notifier.notify('end')
 }
 
 start()
