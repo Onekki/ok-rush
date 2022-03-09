@@ -72,7 +72,8 @@ const start = async () => {
             from: 'weixinh5',
             isPay: '0',
             payType: 'weixin'
-        }
+        },
+        headers: config.headers
     })
 
     console.log('end')
