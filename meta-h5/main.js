@@ -1,6 +1,8 @@
-const notifier = require('node-notifier')
+const fs = require('fs')
 const axios = require('axios')
-const config = require('./config')
+const notifier = require('node-notifier')
+
+const config = JSON.parse(fs.readFileSync('config.json'))
 
 const sleep = (ms) => {
     return new Promise(resolve => setTimeout(() => resolve(), ms))
