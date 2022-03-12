@@ -1,0 +1,19 @@
+{
+    "userId": "788801514000001645962661",
+    "headers": {
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "content-type": "application/json;charset=UTF-8",
+        "requestchannel": "UBQ_H5",
+        "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"99\", \"Microsoft Edge\";v=\"99\"",
+        "sec-ch-ua-mobile": "?1",
+        "sec-ch-ua-platform": "\"Android\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "token": "eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJzdWIiOiI3ODg4MDE1MTQwMDAwMDE2NDU5NjI2NjEiLCJpYXQiOjE2NDcwNzI4NDAsImV4cCI6MTY0OTY2NDg0MH0.KUfLi_MnfeO3h6_D0Hxqyo73TU_qI9MVspWKu-thPDOQEkLozADSg2sRP8pARtpNkJFMuBrn43L-y5qOkh90gw",
+        "cookie": "cna=c3321606daf44897a7b41de82dda7f7b",
+        "Referer": "https://h5.ubanquan.cn/ThemeDetail?themeKey=DGHT",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
+    }
+}
