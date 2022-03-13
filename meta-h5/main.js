@@ -21,7 +21,7 @@ const request = async (options) => {
     } catch (e) { 
         console.log(e.message)
     }
-    await sleep(1000)
+    await sleep(500)
     return await request(options)
 }
 
@@ -34,6 +34,7 @@ const start = async () => {
         headers: config.headers
     })
 
+    config.headers["content-type"] = "application/json;charset=UTF-8"
     const unique = data.data.products[0].unique
     
     data = await request({
