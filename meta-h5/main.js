@@ -85,4 +85,7 @@ const start = async () => {
     notifier.notify('end')
 }
 
-start()
+const startMillis = new Date(config.datetime).getTime()
+const delayMillis = startMillis - new Date().getTime() | 0
+console.log("等待时间:" + delayMillis + " 毫秒")
+setTimeout(() => start(), delayMillis)
