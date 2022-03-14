@@ -85,7 +85,18 @@ const start = async () => {
     notifier.notify('end')
 }
 
-const startMillis = new Date(config.datetime).getTime()
-const delayMillis = startMillis - new Date().getTime() | 0
-console.log("等待时间:" + delayMillis + " 毫秒")
+const formatDelayMillis = (delayMillis) => {
+    const days = Math.floor(delayMillis / (24 * 60 * 60 * 1000))
+    delayMillis = delayMillis % (24 * 60 * 60 * 1000);
+    const hours = Math.floor(delayMillis / (60 * 60 * 1000))
+    delayMillis = delayMillis % (60 * 60 * 1000)
+    const minutes = Math.floor(delayMillis / (60 * 1000))
+    delayMillis = delayMillis % (60 * 1000)
+    const seconds = Math.floor(delayMillis / 1000)
+    delayMillis = delayMillis % 1000
+    return  days + '天' + hours + '时' + minutes + '分' + seconds + '秒' + delayMillis + '毫秒'
+}
+
+const delayMillis = new Date(config.datetime).getTime() - new Date().getTime()
 setTimeout(() => start(), delayMillis)
+console.log("等待时间: " + (delayMillis > 0 ? formatDelayMillis(delayMillis) : '立即开始'))
