@@ -1,5 +1,9 @@
 const fs = require('fs')
+const path = require('path')
+const cp = require('child_process')
+
 const axios = require('axios')
+const inquirer = require('inquirer')
 
 const config = JSON.parse(fs.readFileSync('config.json'))
 
@@ -23,7 +27,42 @@ const request = async (options) => {
     return await request(options)
 }
 
+const downloadFile = async (url, name) => {
+    try {
+        const response = await axios.request({
+            method: "GET",
+            url: url,
+            headers: config.headers,
+            responseType: "stream",
+        });
+        if ([200].includes(response.status)) {
+            const writer = fs.createWriteStream(name);
+            response.data.pipe(writer);
+            return await new Promise((resolve, reject) => {
+                writer.on("finish", resolve);
+                writer.on("error", reject);
+            });
+        }
+    } catch (e) {
+        console.log(e.message)
+    }
+    return await downloadFile(url, name)
+}
+
 const start = async () => {
+
+    const captchaFileName = "captcha.png"
+    await downloadFile("https://h5.stararknft.art//api/VerifyCode/captcha", captchaFileName)
+    cp.execSync('start ' + path.join(__dirname, './' + captchaFileName))
+
+    const answers = await inquirer.prompt([{
+        type: 'input',
+        name: 'name',
+        message: '验证码'
+    }])
+
+    const captcha = answers.name
+
     let data = await request({
         url: 'https://h5.stararknft.art/api/Box/detailed',
         method: 'POST',
@@ -49,9 +88,8 @@ const start = async () => {
                 '&money=' + price + 
                 '&token_id='+ token_id + 
                 '&password=' + config.password +
-                '&captcha=' + config.captcha
+                '&captcha=' + captcha
     })
 }
 
 start()
-
