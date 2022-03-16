@@ -24,8 +24,6 @@ const request = async (options) => {
 }
 
 const start = async () => {
-    console.log('start')
-
     let data = await request({
         url: 'https://h5.stararknft.art/api/Box/detailed',
         method: 'POST',
@@ -50,10 +48,9 @@ const start = async () => {
                 '&uid=' + config.uid + 
                 '&money=' + price + 
                 '&token_id='+ token_id + 
-                '&password=' + config.password
+                '&password=' + config.password +
+                '&captcha=' + config.captcha
     })
-    
-    console.log('end')
 }
 
 start()
