@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "main": "node main.js"
+    "main": "node main.js",
+    "worker": "node worker.js"
   },
   "author": "",
   "license": "ISC",

@@ -24,7 +24,6 @@ const request = async (options) => {
 }
 
 const start = async () => {
-    console.log('start')
 
     let data = await request({
         url: 'https://api.bf.hytx.club/v1/product/info?SpuId=' + config.pid,
@@ -55,8 +54,7 @@ const start = async () => {
     //         spuType: 
     //     })
     // })
-    
-    console.log('end')
+
 }
 
 start()
