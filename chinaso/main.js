@@ -26,7 +26,7 @@ const request = async (options) => {
 }
 
 const start = async () => {
-    notifier.notify('start')
+    // notifier.notify('start')
 
     let data = await request({
         method: 'POST',
@@ -50,7 +50,7 @@ const start = async () => {
         })
     })
 
-    notifier.notify('end')
+    // notifier.notify('end')
 }
 
 start()
