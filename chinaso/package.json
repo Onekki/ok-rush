@@ -1,0 +1,15 @@
+{
+  "name": "chinaso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "node-notifier": "^10.0.1"
+  }
+}
