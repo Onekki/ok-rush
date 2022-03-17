@@ -58,7 +58,7 @@ const start = async () => {
     const answers = await inquirer.prompt([{
         type: 'input',
         name: 'name',
-        message: '验证码'
+        message: '请输入验证码:'
     }])
 
     const captcha = answers.name
