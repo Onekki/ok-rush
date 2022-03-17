@@ -53,7 +53,7 @@ const start = async () => {
 
     const captchaFileName = "captcha.png"
     await downloadFile("https://h5.stararknft.art//api/VerifyCode/captcha", captchaFileName)
-    cp.execSync('start ' + path.join(__dirname, './' + captchaFileName))
+    cp.execSync('code ' + path.join(__dirname, './' + captchaFileName))
 
     const answers = await inquirer.prompt([{
         type: 'input',
@@ -92,4 +92,10 @@ const start = async () => {
     })
 }
 
-start()
+const repeatStart = async () => {
+    for (let i = 0; i < 5; i++) {
+        await start()
+    }
+}
+
+repeatStart()
