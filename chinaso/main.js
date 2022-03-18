@@ -46,7 +46,7 @@ const start = async () => {
         data: JSON.stringify({
             collectionSetId: collectionSetId,
             productId: config.pid,
-            payMethod: "WXPAY"
+            payMethod: "ALIPAY_H5"
         })
     })
 
