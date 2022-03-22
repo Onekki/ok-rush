@@ -80,7 +80,7 @@ const start = async (pid) => {
     })
 
     await request({
-        url: 'https://h5.stararknft.art/api/Pay/direct_buy_er',
+        url: 'https://h5.stararknft.art/api/Pay/direct_buy',
         method: 'POST',
         headers: config.headers,
         data: 'id='+ pid + 
