@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "node main.js"
+    "main": "node main.js",
+    "product": "node product.js"
   },
   "author": "",
   "license": "ISC",
